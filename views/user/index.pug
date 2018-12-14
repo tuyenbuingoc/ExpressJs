@@ -5,6 +5,7 @@ form(action='/user/search', method='get')
     else 
         input(type='text' name='q' placeholder='Search...')
     button Search
+a(href='/user/create') New
 ul
     each user in users
         li= user.name
