@@ -23,9 +23,10 @@ app.get('/user/search', function(req, res) {
     var q = req.query.q;
     var matchedUsers = users.filter(function(user) {
         return user.name.toLowerCase().indexOf(q) !== -1;
-    })
+    });
     res.render('user/index', {
-        users: matchedUsers
-    })
-})
+        users: matchedUsers,
+        q
+    });
+});
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
