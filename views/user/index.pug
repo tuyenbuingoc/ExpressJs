@@ -1,15 +1,17 @@
-h1 Users
-form(action='/user/search', method='get')
-    if q
-        input(type='text' name='q' value= q)
-    else 
-        input(type='text' name='q' placeholder='Search...')
-    button Search
-a(href='/user/create') New
-ul
-    each user in users
-        li 
-            span=  user.name
-            span &nbsp
-            a(href='/user/' + user.id) View
-        
+extends ../layouts/common
+block content
+    h1 Users
+    form(action='/user/search', method='get')
+        if q
+            input(type='text' name='q' value= q)
+        else 
+            input(type='text' name='q' placeholder='Search...')
+        button Search
+    a(href='/user/create') New
+    ul
+        each user in users
+            li 
+                span=  user.name
+                span &nbsp
+                a(href='/user/' + user.id) View
+            
