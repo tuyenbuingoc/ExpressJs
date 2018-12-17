@@ -8,4 +8,8 @@ form(action='/user/search', method='get')
 a(href='/user/create') New
 ul
     each user in users
-        li= user.name
+        li 
+            span=  user.name
+            span &nbsp
+            a(href='/user/' + user.id) View
+        
