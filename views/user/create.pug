@@ -1,9 +1,16 @@
 extends ../layouts/common
 block content
     h1 Create User
-    form(action='/user/create', method='post')
-        label Name
-        input(type='text', name='name')
-        label Age
-        input(type='text', name='age')
-        button Create
+    if errors
+        each error in errors 
+            .alert.alert-danger= error
+    form.mt-5(action='/user/create', method='post')
+        .form-group.row
+            label.col-form-label.col-sm-2(for='name') Name
+            .col-sm-10
+                input#name.form-control(type='text', name='name', value= values ? values.name : "")
+        .form-group.row
+            label.col-form-label.col-sm-2(for='phone') Phone
+            .col-sm-10
+                input#phone.form-control(type='text', name='phone', value= values ? values.phone : "")
+        button.btn.btn-primary.mr-auto Create

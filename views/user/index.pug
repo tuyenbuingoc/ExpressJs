@@ -1,17 +1,29 @@
 extends ../layouts/common
 block content
-    h1 Users
-    form(action='/user/search', method='get')
-        if q
-            input(type='text' name='q' value= q)
-        else 
-            input(type='text' name='q' placeholder='Search...')
-        button Search
-    a(href='/user/create') New
-    ul
+    h1 
+        span.mr-3 Users
+        a.btn.btn-primary(href='/user/create') New
+
+    .d-flex.flex-row.align-items-center
+        form.ml-auto(action='/user/search', method='get')
+            .input-group
+                if query
+                    input.form-control(type='text' name='query' value= query)
+                else 
+                    input.form-control(type='text' name='query' placeholder='Search...')
+                span.input-group-btn 
+                    button.btn.btn-primary.ml-3(type='button') Search
+    table.table
+        tr
+            th Name
+            th Phone
+            th Actions
+    
         each user in users
-            li 
-                span=  user.name
-                span &nbsp
-                a(href='/user/' + user.id) View
+            tr 
+                td= user.name
+                td= user.phone
+                td
+                    a.btn.btn-light(href='/user/' + user.id) View
+
             

@@ -11,13 +11,13 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 
 
-var userRoute = require('./routes/user.route')
+var userRoute = require('./routes/user.route');
 
 app.set('view engine', 'pug');
 app.set('views','./views');
 
 app.use('/user', userRoute);
 app.get('/', function(req, res) {
-    res.render('index')
-})
+    res.render('index');
+});
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
