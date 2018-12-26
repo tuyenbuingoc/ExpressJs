@@ -9,8 +9,9 @@ module.exports.index = function(req, res) {
 
 module.exports.search = function(req, res) {
     var query = req.query.query;
+    var lowerCaseQuery = query.toLowerCase();
     var matchedUsers = db.get('users').value().filter(function(user) {
-        return user.name.toLowerCase().indexOf(query) !== -1;
+        return user.name.toLowerCase().indexOf(lowerCaseQuery) !== -1;
     });
     res.render('user/index', {
         users: matchedUsers,
