@@ -2,43 +2,25 @@
   "users": [
     {
       "name": "Bùi Ngọc Tuyên",
-      "age": "21",
-      "id": "_sSobFHEA"
-    },
-    {
-      "name": "Tuyên Ngọc",
-      "age": "16",
-      "id": "sCeAsg205"
-    },
-    {
-      "name": "Hoàn",
-      "age": "21",
-      "id": "xq03CgGAU"
+      "phone": "0983577312",
+      "id": "KZi-sbkNw",
+      "email": "buingoctuyen08@gmail.com",
+      "password": "e10adc3949ba59abbe56e057f20f883e"
     },
     {
       "name": "Hoàng Văn Đoàn",
-      "age": "21",
-      "id": "igiagdyMI"
+      "phone": "0123123123",
+      "id": "9Q5soBUwx"
     },
     {
-      "name": "tuyenbui",
-      "age": "16",
-      "id": "108W9X1X1"
+      "name": "H",
+      "phone": "T",
+      "id": "12R4eICBh"
     },
     {
-      "name": "h",
-      "age": "7",
-      "id": "LNbK6BWgD"
-    },
-    {
-      "name": "Phùng Thị Hậu",
-      "age": "16",
-      "id": "R4iZw2o-V"
-    },
-    {
-      "name": "Bùi Ngọc Tuyên",
-      "phone": "0983577312",
-      "id": "0GUYq5M9t"
+      "name": "Thịnh Phạm",
+      "phone": "0977071127",
+      "id": "wvsKlSNYr"
     }
   ]
 }

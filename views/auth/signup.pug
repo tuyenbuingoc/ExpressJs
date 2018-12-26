@@ -1,0 +1,24 @@
+extends ../layouts/common
+block content
+    h1 Signup
+        if errors
+            each error in errors 
+                .alert.alert-danger= error
+    form.mt-5(method='post')
+        .form-group.row
+            label.col-form-label.col-sm-2(for='email') Email
+            .col-sm-6
+                input#email.form-control(type='email', name='email', value= values ? values.email : "")
+        .form-group.row
+            label.col-form-label.col-sm-2(for='password') Password
+            .col-sm-6
+                input#password.form-control(type='password', name='password', value= values ? values.password : "")
+        .form-group.row
+            label.col-form-label.col-sm-2(for='name') Name
+            .col-sm-6
+                input#name.form-control(type='text', name='name', value= values ? values.name : "")
+        .form-group.row
+            label.col-form-label.col-sm-2(for='phone') Phone number
+            .col-sm-6
+                input#phone.form-control(type='text', name='phone', value= values ? values.phone : "")
+        button.btn.btn-primary.mr-auto Signup  
