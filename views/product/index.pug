@@ -1,0 +1,14 @@
+extends ../layouts/common
+block content
+    .container
+        .row
+            each item in product
+                .col-3
+                    .card.mb-5(style='width: 16rem, height: 27.5rem')
+                        img.card-img-top(src=item.image, alt=item.name)
+                        .card-body
+                            h5.card-title
+                                span=item.name
+                            p.card-text 
+                                span=item.description  
+                            a.btn.btn-primary(href='#') Add to Cart

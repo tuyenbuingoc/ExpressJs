@@ -15,13 +15,16 @@ app.use(cookieParser(process.env.SESSION_SECRET));
 var userRoute = require('./routes/user.route');
 var authRoute = require('./routes/auth.route');
 var authMiddleware = require('./middlewares/auth.middleware');
+var productRoute = require('./routes/product.route');
 
 app.set('view engine', 'pug');
 app.set('views','./views');
 
+app.use('/product', productRoute);
 app.use('/user', authMiddleware.requireAuth, userRoute);
 app.use('/auth', authRoute);
 app.get('/', function(req, res) {
     res.render('index');
 });
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
