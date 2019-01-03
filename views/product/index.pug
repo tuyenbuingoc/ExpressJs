@@ -3,7 +3,7 @@ block content
     .container
         .row
             each item in product
-                .col-3
+                .col-lg-3
                     .card.mb-5(style='width: 16rem, height: 27.5rem')
                         img.card-img-top(src=item.image, alt=item.name)
                         .card-body
@@ -11,4 +11,17 @@ block content
                                 span=item.name
                             p.card-text 
                                 span=item.description  
-                            a.btn.btn-primary(href='#') Add to Cart
+                            a.btn.btn-primary(href='/cart/add/' + item.id) Add to Cart
+    nav(aria-label='Page navigation example')
+        ul.pagination.justify-content-end
+            li.page-item
+            a.page-link(href='#') Previous
+            li.page-item
+            a.page-link(href='/product/index?page=1') 1
+            li.page-item
+            a.page-link(href='/product/index?page=2') 2
+            li.page-item
+            a.page-link(href='/product/index?page=3') 3
+            li.page-item
+            a.page-link(href='#') Next
+

@@ -14,12 +14,15 @@ block content
                 button.btn.btn-primary.ml-3(type='submit') Search
     table.table
         tr
+            th Avatar
             th Name
             th Phone
             th Actions
     
         each user in users
             tr 
+                td 
+                    img(src=user.avatar, width='64px')
                 td= user.name
                 td= user.phone
                 td

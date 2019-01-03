@@ -8,8 +8,12 @@ html
                 ul.navbar-nav
                     li.nav-item
                         a.nav-link(href='/') Home
-                    li.nav-item.active
+                    li.nav-item
                         a.nav-link(href='/user') User
+                    li.nav-item
+                        a.nav-link(href='/product/index') Products
+                    li.nav-item
+                        a.nav-link(href='/product/index') Cart
             if user
                 p= user.name
         .container.pt-5     
