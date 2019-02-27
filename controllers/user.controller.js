@@ -1,12 +1,22 @@
 var db = require('../db');
-var shortid = require('shortid');
 var multer = require('multer');
+var User = require('../models/user.model');
 
 var upload = multer({dest: 'uploads'});
 
 module.exports.index = function(req, res) {
-    res.render('user/index', {
-        users: db.get('users').value()
+    // res.render('user/index', {
+    //     //users: db.get('users').value()
+    // });
+    User.find().exec(function(err, users) {
+        if(err) {
+            res.send('Ooops! Something went wrong!!!');
+        }
+        else {
+            res.render('user/index', {
+                users: users
+            });
+        }
     });
 };
 
@@ -27,14 +37,33 @@ module.exports.create = function(req, res) {
 };
 module.exports.view = function(req, res) {
     var id = req.params.id;
-    var user = db.get('users').find({id: id}).value();
-    res.render('user/view', {
-        user: user
+    //var user = db.get('users').find({id: id}).value();
+    User.findOne({_id: id}).exec(function(err, user) {
+        if(err) {
+            res.send('Oops! Something went wrong!!!');
+        }
+        else {
+            res.render('user/view', {
+                user: user
+            });
+        }
     });
+    
 };
 module.exports.postCreate = function(req, res) {
-    req.body.id = shortid.generate();
+    //req.body.id = shortid.generate();
     req.body.avatar = req.file.path.split('/').slice(1).join('/');
-    db.get('users').push(req.body).write();
+    //db.get('users').push(req.body).write();
+    var newUser = new User();
+    newUser.email = req.body.email;
+    newUser.name = req.body.name;
+    newUser.phone = req.body.phone;
+    newUser.avatar = req.body.avatar;
+
+    newUser.save(function(err, user) {
+        if(err) {
+            res.send('Oops! Something went wrong!!!');
+        }
+    });
     res.redirect('/user');
 };
