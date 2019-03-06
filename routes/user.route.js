@@ -12,6 +12,10 @@ router.get('/', controller.index);
 router.get('/search', controller.search);
 router.get('/create', controller.create);
 router.get('/:id', controller.view);
+router.get('/edit/:id',controller.edit);
+router.post('/edit', upload.single('avatar'), controller.postEdit);
+router.get('/delete/:id', controller.delete);
+
 
 router.post('/create', upload.single('avatar'), validate.postCreate, controller.postCreate);
 module.exports = router;

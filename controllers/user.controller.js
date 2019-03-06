@@ -35,21 +35,33 @@ module.exports.search = function(req, res) {
 module.exports.create = function(req, res) {
     res.render('user/create');
 };
-module.exports.view = function(req, res) {
+module.exports.view = async function(req, res) {
+    try {
+        var id = req.params.id;
+        var user = await User.findOne({_id: id}).exec();
+        res.render('user/view', {
+            user: user
+        });
+    } catch (error) {
+        throw error;
+    }
+}
+module.exports.edit = async function(req, res){
     var id = req.params.id;
-    //var user = db.get('users').find({id: id}).value();
-    User.findOne({_id: id}).exec(function(err, user) {
-        if(err) {
-            res.send('Oops! Something went wrong!!!');
-        }
-        else {
-            res.render('user/view', {
-                user: user
-            });
+    var user = await User.findById({_id: id}).exec();
+    res.render('user/edit', {
+        values: user
+    });
+}
+
+module.exports.postEdit = function(req, res){
+    User.findOneAndUpdate({_id: req.body._id}, req.body, {new: true}, (err) => {
+        if(!err) {
+            res.redirect('/user');
         }
     });
-    
-};
+}
+
 module.exports.postCreate = function(req, res) {
     //req.body.id = shortid.generate();
     req.body.avatar = req.file.path.split('/').slice(1).join('/');
@@ -60,10 +72,20 @@ module.exports.postCreate = function(req, res) {
     newUser.phone = req.body.phone;
     newUser.avatar = req.body.avatar;
 
-    newUser.save(function(err, user) {
+    newUser.save(function(err) {
         if(err) {
             res.send('Oops! Something went wrong!!!');
         }
     });
     res.redirect('/user');
 };
+module.exports.delete = function(req, res) {
+    User.findByIdAndDelete({_id: req.params.id}, (err, doc) => {
+        if(!err) {
+            res.redirect('/user');
+        }
+        else {
+            console.log(err);
+        }
+    });
+}
